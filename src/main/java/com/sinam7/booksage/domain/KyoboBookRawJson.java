@@ -1,10 +1,12 @@
 package com.sinam7.booksage.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
 
 import java.util.List;
 
-public class KyoboBookJson implements BookJson {
+@Getter
+public class KyoboBookRawJson {
     @JsonProperty("resultMessage")
     private String resultMessage;
     @JsonProperty("resultCode")
@@ -14,6 +16,7 @@ public class KyoboBookJson implements BookJson {
     @JsonProperty("data")
     private Data data;
 
+    @Getter
     public static class Data {
         @JsonProperty("total")
         private int total;
@@ -22,10 +25,11 @@ public class KyoboBookJson implements BookJson {
         @JsonProperty("page")
         private int page;
         @JsonProperty("bestSeller")
-        private List<BestSeller> bestSeller;
+        private List<KyoboBookJson> kyoboBookJson;
     }
 
-    public static class BestSeller {
+    @Getter
+    public static class KyoboBookJson {
         @JsonProperty("productInfo")
         private ProductInfo productInfo;
         @JsonProperty("rowNum")
@@ -86,6 +90,7 @@ public class KyoboBookJson implements BookJson {
         private String saleCmdtid;
         @JsonProperty("prstRnkn")
         private int prstRnkn;
+
     }
 
     public static class ProductInfo {
