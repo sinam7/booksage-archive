@@ -15,12 +15,12 @@ public class BestSellerController {
     private final List<ScrapperService> scrapperServiceList;
 
     @GetMapping("/{storeId}")
-    public List<Book> get(@PathVariable("storeId") Integer id) {
+    public List<Book> findAll(@PathVariable("storeId") Integer id) {
         return (List<Book>) scrapperServiceList.get(id).getBooks();
     }
 
     @GetMapping("/{storeId}/search")
-    public List<Book> get(@PathVariable("storeId") Integer id, @RequestParam("query") String query) {
+    public List<Book> search(@PathVariable("storeId") Integer id, @RequestParam("query") String query) {
         return (List<Book>) scrapperServiceList.get(id).searchBook(query);
     }
 

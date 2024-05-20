@@ -1,6 +1,5 @@
 package com.sinam7.booksage;
 
-import jakarta.annotation.PostConstruct;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -14,6 +13,11 @@ public class AppConfig {
     @Bean
     public WebClient KyoboApiProductClient() {
         return WebClient.create("https://product.kyobobook.co.kr");
+    }
+
+    @Bean
+    public WebClient LibraryApiProductClient() {
+        return WebClient.create("https://lib.kookmin.ac.kr");
     }
 
     @Bean
