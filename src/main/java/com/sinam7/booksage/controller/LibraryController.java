@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/library")
+@RequestMapping("/api/bookstore/library")
 public class LibraryController {
 
     private final LibraryScrapperService libraryScrapperService;
