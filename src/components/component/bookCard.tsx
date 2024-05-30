@@ -11,15 +11,17 @@ interface BookCardProps {
     imageSrc: string;
     href: string;
     isAvailable: boolean;
+    idx:number;
 
 }
 
-export function BookCard({title, author, publisher, price, imageSrc, href, isAvailable}: BookCardProps) {
+export function BookCard({title, author, publisher, price, imageSrc, href, isAvailable, idx}: BookCardProps) {
     // @ts-ignore
     // @ts-ignore
     return (<Card>
         <CardContent className="flex items-center justify-between mt-4">
-            <div className="flex items-center gap-8">
+            <div className="flex items-center gap-4">
+                <span className={"bold"}>{idx + 1}</span>
                 <img
                     alt="Feature 1"
                     className="rounded-md"
