@@ -6,22 +6,23 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/bookstore")
 @RequiredArgsConstructor
 public class BestSellerController {
 
-    private final List<ScrapperService> scrapperServiceList;
+    private final Map<String, ScrapperService> scrapperServiceMap;
 
-    @GetMapping("/{storeId}")
-    public List<Book> findAll(@PathVariable("storeId") Integer id) {
-        return (List<Book>) scrapperServiceList.get(id).getBooks();
+    @GetMapping("/{store}")
+    public List<Book> findAll(@PathVariable("store") String key) {
+        return (List<Book>) scrapperServiceMap.get(key).getBooks();
     }
 
-    @GetMapping("/{storeId}/search")
-    public List<Book> search(@PathVariable("storeId") Integer id, @RequestParam("query") String query) {
-        return (List<Book>) scrapperServiceList.get(id).searchBook(query);
+    @GetMapping("/{store}/search")
+    public List<Book> search(@PathVariable("store") String key, @RequestParam("query") String query) {
+        return (List<Book>) scrapperServiceMap.get(key).searchBook(query);
     }
 
 
